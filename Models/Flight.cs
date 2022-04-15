@@ -1,8 +1,9 @@
-﻿namespace PlaneManager.Models
+﻿using System;
+
+namespace PlaneManager.Models
 {
-    internal class Flight
+    internal class Flight : DataModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public int Size { get; set; }
 
@@ -10,7 +11,7 @@
         {
             if (data != null)
             {
-                if (int.TryParse(data[0], out int id))
+                if (Guid.TryParse(data[0], out Guid id))
                 {
                     Id = id;
                 }

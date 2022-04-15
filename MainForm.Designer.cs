@@ -1,6 +1,6 @@
 ﻿namespace PlaneManager
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,9 @@
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.DataLoadDataMenuItem = new System.Windows.Forms.MenuItem();
             this.DataSaveDataMenuItem = new System.Windows.Forms.MenuItem();
+            this.PlaneViewList = new System.Windows.Forms.ListView();
+            this.ListViewPlaneId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ListViewPlaneName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -67,15 +70,39 @@
             this.DataSaveDataMenuItem.Text = "Save data";
             this.DataSaveDataMenuItem.Click += new System.EventHandler(this.DataSaveDataMenuItem_Click);
             // 
-            // Form1
+            // PlaneViewList
+            // 
+            this.PlaneViewList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ListViewPlaneId,
+            this.ListViewPlaneName});
+            this.PlaneViewList.FullRowSelect = true;
+            this.PlaneViewList.GridLines = true;
+            this.PlaneViewList.HideSelection = false;
+            this.PlaneViewList.Location = new System.Drawing.Point(12, 12);
+            this.PlaneViewList.Name = "PlaneViewList";
+            this.PlaneViewList.Size = new System.Drawing.Size(776, 426);
+            this.PlaneViewList.TabIndex = 0;
+            this.PlaneViewList.UseCompatibleStateImageBehavior = false;
+            this.PlaneViewList.View = System.Windows.Forms.View.Details;
+            // 
+            // ListViewPlaneId
+            // 
+            this.ListViewPlaneId.Text = "Id";
+            // 
+            // ListViewPlaneName
+            // 
+            this.ListViewPlaneName.Text = "Name";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.PlaneViewList);
             this.Menu = this.mainMenu1;
-            this.Name = "Form1";
-            this.Text = "Plane Manager";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "MainForm";
+            this.Text = "Flight Manager";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -87,6 +114,9 @@
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.MenuItem DataLoadDataMenuItem;
         private System.Windows.Forms.MenuItem DataSaveDataMenuItem;
+        private System.Windows.Forms.ListView PlaneViewList;
+        private System.Windows.Forms.ColumnHeader ListViewPlaneId;
+        private System.Windows.Forms.ColumnHeader ListViewPlaneName;
     }
 }
 

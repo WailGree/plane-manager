@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using PlaneManager.Models;
+using System.Reflection;
 
 namespace PlaneManager
 {
@@ -16,30 +17,28 @@ namespace PlaneManager
         }
 
         // Save Data globally
-        static List<Plane> Planes { get; set; } = new List<Plane>();
-        static List<Flight> Flights { get; set; } = new List<Flight>();
-        static List<Ticket> Tickets { get; set; } = new List<Ticket>();
+        public static List<Plane> Planes { get; set; } = new List<Plane>();
+        public static List<Flight> Flights { get; set; } = new List<Flight>();
+        public static List<Ticket> Tickets { get; set; } = new List<Ticket>();
 
+        private static readonly string _planesFile = "planes.csv";
+        private static readonly string _flightsFile = "flights.csv";
+        private static readonly string _ticketsFile = "tickets.csv";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            LoadData();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
         public static void LoadData()
         {
-            var planesFile = "planes.csv";
-            var flightsFile = "flights.csv";
-            var ticketsFile = "tickets.csv";
-
-            LoadDataType(planesFile, DataType.Plane);
-            LoadDataType(flightsFile, DataType.Flight);
-            LoadDataType(ticketsFile, DataType.Ticket);
+            LoadDataType(_planesFile, DataType.Plane);
+            LoadDataType(_flightsFile, DataType.Flight);
+            LoadDataType(_ticketsFile, DataType.Ticket);
         }
         private static void LoadDataType(string fileName, DataType dataType)
         {
@@ -75,6 +74,61 @@ namespace PlaneManager
                         default:
                             break;
                     }
+                }
+            }
+        }
+        public static void SaveData()
+        {
+            SaveDataType(_planesFile, DataType.Plane);
+            SaveDataType(_flightsFile, DataType.Flight);
+            SaveDataType(_ticketsFile, DataType.Ticket);
+        }
+        private static void SaveDataType(string fileName, DataType dataType)
+        {
+            if (File.Exists(fileName)) File.Delete(fileName);
+            switch (dataType)
+            {
+                case DataType.Plane:
+                    SavePlanes(fileName);
+                    break;
+                case DataType.Flight:
+                    SaveFlights(fileName);
+                    break;
+                case DataType.Ticket:
+                    SaveTickets(fileName);
+                    break;
+            }
+        }
+        private static void SavePlanes(string fileName)
+        {
+            if (File.Exists(fileName)) File.Delete(fileName);
+            using (var sw = new StreamWriter(fileName))
+            {
+                foreach (var plane in Planes)
+                {
+                    sw.WriteLine($"{plane.Id};{plane.Name}");
+                }
+            }
+        }
+        private static void SaveFlights(string fileName)
+        {
+            if (File.Exists(fileName)) File.Delete(fileName);
+            using (var sw = new StreamWriter(fileName))
+            {
+                foreach (var flight in Flights)
+                {
+                    sw.WriteLine($"{flight.Id};{flight.Name};{flight.Size}");
+                }
+            }
+        }
+        private static void SaveTickets(string fileName)
+        {
+            if (File.Exists(fileName)) File.Delete(fileName);
+            using (var sw = new StreamWriter(fileName))
+            {
+                foreach (var ticket in Tickets)
+                {
+                    sw.WriteLine($"{ticket.Id};{ticket.IsPurchased};");
                 }
             }
         }

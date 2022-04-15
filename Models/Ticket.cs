@@ -2,9 +2,8 @@
 
 namespace PlaneManager.Models
 {
-    internal class Ticket
+    internal class Ticket : DataModel
     {
-        public Guid Id { get; set; }
         public bool IsPurchased { get; set; } = false;
 
         public Ticket(string[] data)
