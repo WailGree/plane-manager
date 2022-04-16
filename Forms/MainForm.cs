@@ -10,6 +10,7 @@ namespace PlaneManager
         public MainForm()
         {
             InitializeComponent();
+            passengersDataGridView.DataSource = Program.Passengers;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -47,25 +48,30 @@ namespace PlaneManager
                     cPF.Close();
                 }
             }
-            ReloadDisplay();
+            //ReloadDisplay();
         }
 
         private void ReloadDisplay()
         {
-            passengerViewList.Items.Clear();
-            foreach (var passenger in Program.Passengers)
-            {
-                var newPassenger = new ListViewItem(passenger.Name);
-                newPassenger.SubItems.Add(passenger.BirthDate);
-                newPassenger.SubItems.Add(passenger.PhoneNumber);
-                newPassenger.SubItems.Add(passenger.Email);
-                passengerViewList.Items.Add(newPassenger);
-            }
+            //passengersViewList.Items.Clear();
+            //passengersDataGridView.Rows.Clear();
+            //foreach (var passenger in Program.Passengers)
+            //{
+            //    var newPassenger = new ListViewItem(passenger.Name);
+            //    newPassenger.SubItems.Add(passenger.BirthDate);
+            //    newPassenger.SubItems.Add(passenger.PhoneNumber);
+            //    newPassenger.SubItems.Add(passenger.Email);
+            //    passengersDataGridView.Rows.Add(newPassenger);
+            //}
         }
 
         private void ShowPassengersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            passengerViewList.Show();
+            passengersDataGridView.BringToFront();
+        }
+
+        private void DeletePassengerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
         }
     }
 }

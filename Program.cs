@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using PlaneManager.Models;
+using System.ComponentModel;
 
 namespace PlaneManager
 {
@@ -16,9 +17,10 @@ namespace PlaneManager
         }
 
         // Save Data globally
-        public static List<Passenger> Passengers { get; set; } = new List<Passenger>();
-        public static List<Flight> Flights { get; set; } = new List<Flight>();
-        public static List<Ticket> Tickets { get; set; } = new List<Ticket>();
+        // Using BindingList instead of List will make it possible, to update DataGridView on change of data. With simple List it will NOT fire event/update view.
+        public static BindingList<Passenger> Passengers { get; set; } = new BindingList<Passenger>();
+        public static BindingList<Flight> Flights { get; set; } = new BindingList<Flight>();
+        public static BindingList<Ticket> Tickets { get; set; } = new BindingList<Ticket>();
 
         public static readonly string _passengersFile = "passengers.csv";
         public static readonly string _flightsFile = "flights.csv";
