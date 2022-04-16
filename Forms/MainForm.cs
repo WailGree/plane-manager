@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlaneManager.Views;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -37,7 +38,15 @@ namespace PlaneManager
 
         private void CreatePassengerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.CreatePassenger("Joe", "2022-01-01", "06202828282", "elvador@gmail.com");
+            //Program.CreatePassenger("Joe", "2022-01-01", "06202828282", "elvador@gmail.com");
+            using(var cPF = new CreatePassengerForm())
+            {
+                //cPF.ShowDialog();
+                if(cPF.ShowDialog() == DialogResult.OK)
+                {
+                    cPF.Close();
+                }
+            }
             ReloadDisplay();
         }
 
@@ -52,6 +61,11 @@ namespace PlaneManager
                 newPassenger.SubItems.Add(passenger.Email);
                 passengerViewList.Items.Add(newPassenger);
             }
+        }
+
+        private void ShowPassengersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            passengerViewList.Show();
         }
     }
 }

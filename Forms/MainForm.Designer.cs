@@ -42,6 +42,7 @@
             this.savePassangersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPassangersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPassengersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,13 +67,17 @@
             // 
             this.ListViewPassangerName.Text = "Name";
             // 
+            // ListViewPassangerBirthDate
+            // 
+            this.ListViewPassangerBirthDate.Text = "Birth Date";
+            // 
             // ListViewPassangerPhoneNumber
             // 
             this.ListViewPassangerPhoneNumber.Text = "Phone";
             // 
             // ListViewPassangerEmail
             // 
-            this.ListViewPassangerEmail.Text = "Email";
+            this.ListViewPassangerEmail.Text = "Email Address";
             // 
             // menuStrip
             // 
@@ -104,6 +109,8 @@
             // 
             // viewToolStripMenuItem
             // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showPassengersToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
@@ -145,6 +152,13 @@
             this.createFlightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createFlightToolStripMenuItem.Text = "New Flight";
             // 
+            // showPassengersToolStripMenuItem
+            // 
+            this.showPassengersToolStripMenuItem.Name = "showPassengersToolStripMenuItem";
+            this.showPassengersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showPassengersToolStripMenuItem.Text = "Show Passengers";
+            this.showPassengersToolStripMenuItem.Click += new System.EventHandler(this.ShowPassengersToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +168,7 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flight Manager";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
@@ -178,6 +193,7 @@
         private System.Windows.Forms.ColumnHeader ListViewPassangerPhoneNumber;
         private System.Windows.Forms.ColumnHeader ListViewPassangerEmail;
         private System.Windows.Forms.ToolStripMenuItem createFlightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showPassengersToolStripMenuItem;
     }
 }
 
