@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using PlaneManager.Models;
-using System.Reflection;
 
 namespace PlaneManager
 {
@@ -11,19 +10,20 @@ namespace PlaneManager
     {
         private enum DataType
         {
-            Plane,
             Flight,
-            Ticket
+            Ticket,
+            Passenger
         }
 
         // Save Data globally
-        public static List<Plane> Planes { get; set; } = new List<Plane>();
+        public static List<Passenger> Passengers { get; set; } = new List<Passenger>();
         public static List<Flight> Flights { get; set; } = new List<Flight>();
         public static List<Ticket> Tickets { get; set; } = new List<Ticket>();
 
-        private static readonly string _planesFile = "planes.csv";
-        private static readonly string _flightsFile = "flights.csv";
-        private static readonly string _ticketsFile = "tickets.csv";
+        public static readonly string _passengersFile = "passengers.csv";
+        public static readonly string _flightsFile = "flights.csv";
+        public static readonly string _ticketsFile = "tickets.csv";
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -36,84 +36,73 @@ namespace PlaneManager
         }
         public static void LoadData()
         {
-            LoadDataType(_planesFile, DataType.Plane);
             LoadDataType(_flightsFile, DataType.Flight);
             LoadDataType(_ticketsFile, DataType.Ticket);
         }
+
         private static void LoadDataType(string fileName, DataType dataType)
         {
-            switch (dataType)
+            foreach (var line in File.ReadAllLines(fileName))
             {
-                case DataType.Plane:
-                    Planes.Clear();
-                    break;
-                case DataType.Flight:
-                    Flights.Clear();
-                    break;
-                case DataType.Ticket:
-                    Tickets.Clear();
-                    break;
+                var data = line.Split(';');
+                switch (dataType)
+                {
+                    case DataType.Passenger:
+                        Passengers.Add(new Passenger(data));
+                        break;
+                    case DataType.Flight:
+                        Flights.Add(new Flight(data));
+                        break;
+                    case DataType.Ticket:
+                        Tickets.Add(new Ticket(data));
+                        break;
+                    default:
+                        break;
+                }
             }
+        }
 
-            if (File.Exists(fileName))
+        public static void SaveAllData()
+        {
+            SavePassengers();
+            SaveFlights();
+            SaveTickets();
+        }
+
+        #region Passangers related functions
+        public static void CreatePassenger(string name, string birthdate, string phonenumber, string email)
+        {
+            Passengers.Add(new Passenger(name, birthdate, phonenumber, email));
+        }
+
+        public static void SavePassengers()
+        {
+
+            if (File.Exists(_passengersFile)) File.Delete(_passengersFile);
+            using (var sw = new StreamWriter(_passengersFile))
             {
-                foreach (var line in File.ReadAllLines(fileName))
+                foreach (var passenger in Passengers)
                 {
-                    var data = line.Split(';');
-                    switch (dataType)
-                    {
-                        case DataType.Plane:
-                            Planes.Add(new Plane(data));
-                            break;
-                        case DataType.Flight:
-                            Flights.Add(new Flight(data));
-                            break;
-                        case DataType.Ticket:
-                            Tickets.Add(new Ticket(data));
-                            break;
-                        default:
-                            break;
-                    }
+                    sw.WriteLine($"{passenger.Name};{passenger.BirthDate};{passenger.PhoneNumber};{passenger.Email}");
                 }
             }
         }
-        public static void SaveData()
+
+        public static void LoadPassangers()
         {
-            SaveDataType(_planesFile, DataType.Plane);
-            SaveDataType(_flightsFile, DataType.Flight);
-            SaveDataType(_ticketsFile, DataType.Ticket);
-        }
-        private static void SaveDataType(string fileName, DataType dataType)
-        {
-            if (File.Exists(fileName)) File.Delete(fileName);
-            switch (dataType)
+            if (File.Exists(_passengersFile))
             {
-                case DataType.Plane:
-                    SavePlanes(fileName);
-                    break;
-                case DataType.Flight:
-                    SaveFlights(fileName);
-                    break;
-                case DataType.Ticket:
-                    SaveTickets(fileName);
-                    break;
+                Passengers.Clear();
+                LoadDataType(_passengersFile, DataType.Passenger);
             }
         }
-        private static void SavePlanes(string fileName)
+        #endregion
+
+        #region Flights related functions
+        public static void SaveFlights()
         {
-            if (File.Exists(fileName)) File.Delete(fileName);
-            using (var sw = new StreamWriter(fileName))
-            {
-                foreach (var plane in Planes)
-                {
-                    sw.WriteLine($"{plane.Id};{plane.Name}");
-                }
-            }
-        }
-        private static void SaveFlights(string fileName)
-        {
-            if (File.Exists(fileName)) File.Delete(fileName);
-            using (var sw = new StreamWriter(fileName))
+            if (File.Exists(_flightsFile)) File.Delete(_flightsFile);
+            using (var sw = new StreamWriter(_flightsFile))
             {
                 foreach (var flight in Flights)
                 {
@@ -121,10 +110,13 @@ namespace PlaneManager
                 }
             }
         }
-        private static void SaveTickets(string fileName)
+        #endregion
+
+        #region Tickets related functions
+        public static void SaveTickets()
         {
-            if (File.Exists(fileName)) File.Delete(fileName);
-            using (var sw = new StreamWriter(fileName))
+            if (File.Exists(_ticketsFile)) File.Delete(_ticketsFile);
+            using (var sw = new StreamWriter(_ticketsFile))
             {
                 foreach (var ticket in Tickets)
                 {
@@ -132,5 +124,6 @@ namespace PlaneManager
                 }
             }
         }
+        #endregion
     }
 }

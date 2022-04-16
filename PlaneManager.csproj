@@ -48,13 +48,13 @@
   <ItemGroup>
     <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\Passenger.cs" />
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Plane.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
