@@ -48,19 +48,17 @@ namespace PlaneManager
             foreach (var line in File.ReadAllLines(fileName))
             {
                 var data = line.Split(';');
-                switch (dataType)
+                if (dataType == DataType.Passenger)
                 {
-                    case DataType.Passenger:
-                        Passengers.Add(new Passenger(data));
-                        break;
-                    case DataType.Flight:
-                        Flights.Add(new Flight(data));
-                        break;
-                    case DataType.Ticket:
-                        Tickets.Add(new Ticket(data));
-                        break;
-                    default:
-                        break;
+                    Passengers.Add(new Passenger(data));
+                }
+                else if (dataType == DataType.Flight)
+                {
+                    Flights.Add(new Flight(data));
+                }
+                else if (dataType == DataType.Ticket)
+                {
+                    Tickets.Add(new Ticket(data));
                 }
             }
         }
