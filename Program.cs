@@ -103,7 +103,7 @@ namespace PlaneManager
         #region Flights related functions
         public static void CreateFlight(string name, int size, DateTime departureDate, DateTime arrivalDate, string departure, string destination)
         {
-            Flights.Add(new Flight(Guid.NewGuid(), name, size, departureDate, arrivalDate, departure, destination));
+            Flights.Add(new Flight(name, size, departureDate, arrivalDate, departure, destination));
         }
         public static void SaveFlights()
         {

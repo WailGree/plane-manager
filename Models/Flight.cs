@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace PlaneManager.Models
 {
@@ -7,7 +6,7 @@ namespace PlaneManager.Models
     {
         public string Name { get; set; }
         public int Size { get; set; }
-        public BindingList<Passenger> Passengers { get; set; } = new BindingList<Passenger>();
+        public Seat[] Seats { get; set; }
         public DateTime DepartureDate { get; set; }
         public DateTime ArrivalDate { get; set; }
         public string Departure { get; set; }
@@ -43,14 +42,18 @@ namespace PlaneManager.Models
             }
             Departure = data[5];
             Destination = data[6];
-            //DepartureDate = data[2];
         }
 
-        public Flight(Guid guid, string name, int size, DateTime departureDate, DateTime arrivalDate, string departure, string destination)
+        public Flight(string name, int size, DateTime departureDate, DateTime arrivalDate, string departure, string destination)
         {
-            Id = guid;
+            Id = Guid.NewGuid();
             Name = name;
             Size = size;
+            Seats = new Seat[Size];
+            for (int i = 0; i < Size; i++)
+            {
+                Seats[i] = new Seat(i + 1);
+            }
             DepartureDate = departureDate;
             ArrivalDate = arrivalDate;
             Departure = departure;
