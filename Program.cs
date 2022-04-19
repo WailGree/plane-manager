@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using PlaneManager.Models;
 using PlaneManager.Forms;
 using System.ComponentModel;
+using System.Text;
 
 namespace PlaneManager
 {
@@ -112,7 +113,17 @@ namespace PlaneManager
             {
                 foreach (var flight in Flights)
                 {
-                    sw.WriteLine($"{flight.Id};{flight.Name};{flight.Size};{flight.DepartureDate};{flight.ArrivalDate};{flight.Departure};{flight.Destination}");
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append($"{flight.Id};{flight.Name};{flight.Size};");
+                    if (flight.Size > 0)
+                    {
+                        foreach (var seat in flight.Seats)
+                        {
+                            sb.Append($"{seat.Id};{seat.SeatNumber};{seat.IsBooked};");
+                        }
+                    }
+                    sb.Append($"{flight.DepartureDate};{flight.ArrivalDate};{flight.Departure};{flight.Destination}");
+                    sw.WriteLine(sb);
                 }
             }
         }

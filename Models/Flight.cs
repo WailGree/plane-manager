@@ -15,33 +15,32 @@ namespace PlaneManager.Models
 
         public Flight(string[] data)
         {
-            if (data != null && data.Length == 7)
+            if (data != null && data.Length >= 7 && Guid.TryParse(data[0], out Guid id) && int.TryParse(data[2], out int size) && DateTime.TryParse(data[3 + size * 3], out DateTime departureDate) && DateTime.TryParse(data[3 + size * 3 + 1], out DateTime arrivalDate))
             {
-                if (Guid.TryParse(data[0], out Guid id))
-                {
-                    Id = id;
-                }
+                Id = id;
                 Name = data[1];
-                if (int.TryParse(data[2], out int size))
+                Size = size;
+
+                if (Size > 0)
                 {
-                    Size = size;
+                    Seats = new Seat[Size];
+                    int seatIndex = 0;
+                    for (int x = 4; x <= (1 + Size * 3); x += 3)
+                    {
+                        Seats[seatIndex] = new Seat(new string[] { data[x], data[x + 1], data[x + 2] });
+                        seatIndex++;
+                    }
                 }
                 else
                 {
-                    Size = 0;
+                    Seats = new Seat[0];
                 }
-            }
-            if (DateTime.TryParse(data[3], out DateTime departureDate))
-            {
+
                 DepartureDate = departureDate;
-                // If no valid DepartureDate, don't even bother with ArrivalDate parse
-                if (DateTime.TryParse(data[4], out DateTime arrivalDate))
-                {
-                    ArrivalDate = arrivalDate;
-                }
+                ArrivalDate = arrivalDate;
+                Departure = data[3 + Size * 3 + 2];
+                Destination = data[3 + Size * 3 + 3];
             }
-            Departure = data[5];
-            Destination = data[6];
         }
 
         public Flight(string name, int size, DateTime departureDate, DateTime arrivalDate, string departure, string destination)

@@ -14,6 +14,16 @@ namespace PlaneManager.Models
             SeatNumber = seatNumber;
         }
 
+        public Seat(string[] data)
+        {
+            if (data != null && data.Length == 3 && Guid.TryParse(data[0], out Guid guid) && int.TryParse(data[1], out int seatNumber) && bool.TryParse(data[2], out bool isBooked))
+            {
+                Id = guid;
+                SeatNumber = seatNumber;
+                IsBooked = isBooked;
+            }
+        }
+
         public Seat(Guid guid, int seatNumber, bool isBooked)
         {
             Id = guid;
