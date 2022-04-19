@@ -1,16 +1,14 @@
-﻿using PlaneManager.Views;
-using System;
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace PlaneManager
+namespace PlaneManager.Forms
 {
     public partial class MainForm : Form
     {
         public MainForm()
         {
             InitializeComponent();
-            passengersDataGridView.DataSource = Program.Passengers;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -27,7 +25,6 @@ namespace PlaneManager
             if (File.Exists(Program._passengersFile))
             {
                 Program.LoadPassangers();
-                ReloadDisplay();
             }
             else
             {
@@ -40,38 +37,52 @@ namespace PlaneManager
         private void CreatePassengerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Program.CreatePassenger("Joe", "2022-01-01", "06202828282", "elvador@gmail.com");
-            using(var cPF = new CreatePassengerForm())
+            using (var cPF = new CreatePassengerForm())
             {
-                //cPF.ShowDialog();
-                if(cPF.ShowDialog() == DialogResult.OK)
+                if (cPF.ShowDialog() == DialogResult.OK)
                 {
                     cPF.Close();
                 }
             }
-            //ReloadDisplay();
-        }
-
-        private void ReloadDisplay()
-        {
-            //passengersViewList.Items.Clear();
-            //passengersDataGridView.Rows.Clear();
-            //foreach (var passenger in Program.Passengers)
-            //{
-            //    var newPassenger = new ListViewItem(passenger.Name);
-            //    newPassenger.SubItems.Add(passenger.BirthDate);
-            //    newPassenger.SubItems.Add(passenger.PhoneNumber);
-            //    newPassenger.SubItems.Add(passenger.Email);
-            //    passengersDataGridView.Rows.Add(newPassenger);
-            //}
         }
 
         private void ShowPassengersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            passengersDataGridView.BringToFront();
+            detailsDataGridView.DataSource = Program.Passengers;
+        }
+        private void ShowFlightsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            detailsDataGridView.DataSource = Program.Flights;
         }
 
-        private void DeletePassengerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CreateFlightToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            using (var cFF = new CreateFlightForm())
+            {
+                if (cFF.ShowDialog() == DialogResult.OK)
+                {
+                    cFF.Close();
+                }
+            }
+        }
+
+        private void SaveFlightsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.SaveFlights();
+        }
+
+        private void LoadFlightsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(Program._flightsFile))
+            {
+                Program.LoadFlights();
+            }
+            else
+            {
+                MessageBox.Show($"Save file \"{Program._flightsFile}\" not found.", "File not found",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Warning);
+            }
         }
     }
 }

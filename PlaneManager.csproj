@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\CreateFlightForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateFlightForm.Designer.cs">
+      <DependentUpon>CreateFlightForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Passenger.cs" />
@@ -61,9 +67,13 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\CreateFlightForm.resx">
+      <DependentUpon>CreateFlightForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreatePassengerForm.resx">
       <DependentUpon>CreatePassengerForm.cs</DependentUpon>
     </EmbeddedResource>

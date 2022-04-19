@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PlaneManager.Views
+namespace PlaneManager.Forms
 {
     public partial class CreatePassengerForm : Form
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using PlaneManager.Models;
+using PlaneManager.Forms;
 using System.ComponentModel;
 
 namespace PlaneManager
@@ -85,7 +85,7 @@ namespace PlaneManager
             {
                 foreach (var passenger in Passengers)
                 {
-                    sw.WriteLine($"{passenger.Name};{passenger.BirthDate};{passenger.PhoneNumber};{passenger.Email}");
+                    sw.WriteLine($"{passenger.Id};{passenger.Name};{passenger.BirthDate};{passenger.PhoneNumber};{passenger.Email}");
                 }
             }
         }
@@ -101,6 +101,10 @@ namespace PlaneManager
         #endregion
 
         #region Flights related functions
+        public static void CreateFlight(string name, int size, DateTime departureDate, DateTime arrivalDate, string departure, string destination)
+        {
+            Flights.Add(new Flight(Guid.NewGuid(), name, size, departureDate, arrivalDate, departure, destination));
+        }
         public static void SaveFlights()
         {
             if (File.Exists(_flightsFile)) File.Delete(_flightsFile);
@@ -108,8 +112,17 @@ namespace PlaneManager
             {
                 foreach (var flight in Flights)
                 {
-                    sw.WriteLine($"{flight.Id};{flight.Name};{flight.Size}");
+                    sw.WriteLine($"{flight.Id};{flight.Name};{flight.Size};{flight.DepartureDate};{flight.ArrivalDate};{flight.Departure};{flight.Destination}");
                 }
+            }
+        }
+
+        public static void LoadFlights()
+        {
+            if (File.Exists(_flightsFile))
+            {
+                Flights.Clear();
+                LoadDataType(_flightsFile, DataType.Flight);
             }
         }
         #endregion

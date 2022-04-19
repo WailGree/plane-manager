@@ -1,4 +1,4 @@
-﻿namespace PlaneManager.Views
+﻿namespace PlaneManager.Forms
 {
     partial class CreatePassengerForm
     {
