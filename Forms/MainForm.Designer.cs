@@ -1,6 +1,6 @@
 ﻿namespace PlaneManager.Forms
 {
-    partial class MainForm
+    partial class mainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -120,7 +120,7 @@
             this.savePassangersToolStripMenuItem,
             this.loadPassangersToolStripMenuItem});
             this.passangersToolStripMenuItem.Name = "passangersToolStripMenuItem";
-            this.passangersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.passangersToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.passangersToolStripMenuItem.Text = "Passangers";
             // 
             // savePassangersToolStripMenuItem
@@ -143,20 +143,20 @@
             this.saveFlightsToolStripMenuItem,
             this.loadFlightsToolStripMenuItem});
             this.flightsToolStripMenuItem.Name = "flightsToolStripMenuItem";
-            this.flightsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.flightsToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.flightsToolStripMenuItem.Text = "Flights";
             // 
             // saveFlightsToolStripMenuItem
             // 
             this.saveFlightsToolStripMenuItem.Name = "saveFlightsToolStripMenuItem";
-            this.saveFlightsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveFlightsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.saveFlightsToolStripMenuItem.Text = "Save Flights";
             this.saveFlightsToolStripMenuItem.Click += new System.EventHandler(this.SaveFlightsToolStripMenuItem_Click);
             // 
             // loadFlightsToolStripMenuItem
             // 
             this.loadFlightsToolStripMenuItem.Name = "loadFlightsToolStripMenuItem";
-            this.loadFlightsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadFlightsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.loadFlightsToolStripMenuItem.Text = "Load Flights";
             this.loadFlightsToolStripMenuItem.Click += new System.EventHandler(this.LoadFlightsToolStripMenuItem_Click);
             // 

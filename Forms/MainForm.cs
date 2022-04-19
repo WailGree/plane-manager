@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace PlaneManager.Forms
 {
-    public partial class MainForm : Form
+    public partial class mainForm : Form
     {
-        public MainForm()
+        public mainForm()
         {
             InitializeComponent();
         }
@@ -15,6 +15,7 @@ namespace PlaneManager.Forms
         {
         }
 
+        #region Passengers related methods/events
         private void SavePassangersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.SavePassengers();
@@ -36,7 +37,6 @@ namespace PlaneManager.Forms
 
         private void CreatePassengerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Program.CreatePassenger("Joe", "2022-01-01", "06202828282", "elvador@gmail.com");
             using (var cPF = new CreatePassengerForm())
             {
                 if (cPF.ShowDialog() == DialogResult.OK)
@@ -50,6 +50,9 @@ namespace PlaneManager.Forms
         {
             detailsDataGridView.DataSource = Program.Passengers;
         }
+        #endregion
+
+        #region Flights related methods/events
         private void ShowFlightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             detailsDataGridView.DataSource = Program.Flights;
@@ -84,5 +87,6 @@ namespace PlaneManager.Forms
                                  MessageBoxIcon.Warning);
             }
         }
+        #endregion
     }
 }
