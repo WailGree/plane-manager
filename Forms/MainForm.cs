@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PlaneManager.Forms
@@ -13,6 +14,7 @@ namespace PlaneManager.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            filterFlightsTextBox.Hide();
         }
 
         #region Passengers related methods/events
@@ -49,6 +51,7 @@ namespace PlaneManager.Forms
         private void ShowPassengersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             detailsDataGridView.DataSource = Program.Passengers;
+            filterFlightsTextBox.Hide();
         }
         #endregion
 
@@ -56,6 +59,7 @@ namespace PlaneManager.Forms
         private void ShowFlightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             detailsDataGridView.DataSource = Program.Flights;
+            filterFlightsTextBox.Show();
         }
 
         private void CreateFlightToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,6 +90,11 @@ namespace PlaneManager.Forms
                                  MessageBoxButtons.OK,
                                  MessageBoxIcon.Warning);
             }
+        }
+
+        private void FilterFlightsTextBox_TextChanged(object sender, EventArgs e)
+        {
+            detailsDataGridView.DataSource = Program.Flights.Where(flight => flight.Name.Contains(filterFlightsTextBox.Text)).ToList();
         }
         #endregion
     }

@@ -43,6 +43,7 @@
             this.saveFlightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFlightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detailsDataGridView = new System.Windows.Forms.DataGridView();
+            this.filterFlightsTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detailsDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -163,21 +164,30 @@
             // detailsDataGridView
             // 
             this.detailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.detailsDataGridView.Location = new System.Drawing.Point(12, 27);
+            this.detailsDataGridView.Location = new System.Drawing.Point(12, 58);
             this.detailsDataGridView.Name = "detailsDataGridView";
             this.detailsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.detailsDataGridView.Size = new System.Drawing.Size(776, 411);
+            this.detailsDataGridView.Size = new System.Drawing.Size(776, 380);
             this.detailsDataGridView.TabIndex = 2;
             // 
-            // MainForm
+            // filterFlightsTextBox
+            // 
+            this.filterFlightsTextBox.Location = new System.Drawing.Point(688, 32);
+            this.filterFlightsTextBox.Name = "filterFlightsTextBox";
+            this.filterFlightsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.filterFlightsTextBox.TabIndex = 3;
+            this.filterFlightsTextBox.TextChanged += new System.EventHandler(this.FilterFlightsTextBox_TextChanged);
+            // 
+            // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.filterFlightsTextBox);
             this.Controls.Add(this.detailsDataGridView);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
-            this.Name = "MainForm";
+            this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flight Manager";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -205,6 +215,7 @@
         private System.Windows.Forms.ToolStripMenuItem flightsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveFlightsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadFlightsToolStripMenuItem;
+        private System.Windows.Forms.TextBox filterFlightsTextBox;
     }
 }
 
