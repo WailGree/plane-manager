@@ -47,14 +47,14 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(12, 43);
+            this.nameTextBox.Location = new System.Drawing.Point(33, 41);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 20);
             this.nameTextBox.TabIndex = 0;
             // 
             // sizeNumericUpDown
             // 
-            this.sizeNumericUpDown.Location = new System.Drawing.Point(12, 95);
+            this.sizeNumericUpDown.Location = new System.Drawing.Point(33, 93);
             this.sizeNumericUpDown.Name = "sizeNumericUpDown";
             this.sizeNumericUpDown.Size = new System.Drawing.Size(100, 20);
             this.sizeNumericUpDown.TabIndex = 2;
@@ -62,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 27);
+            this.label1.Location = new System.Drawing.Point(66, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 3;
@@ -71,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 79);
+            this.label2.Location = new System.Drawing.Point(66, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 4;
@@ -79,22 +79,22 @@
             // 
             // departureDateTimePicker
             // 
-            this.departureDateTimePicker.Location = new System.Drawing.Point(139, 43);
+            this.departureDateTimePicker.Location = new System.Drawing.Point(172, 41);
             this.departureDateTimePicker.Name = "departureDateTimePicker";
-            this.departureDateTimePicker.Size = new System.Drawing.Size(199, 20);
+            this.departureDateTimePicker.Size = new System.Drawing.Size(247, 20);
             this.departureDateTimePicker.TabIndex = 5;
             // 
             // arrivalDateTimePicker
             // 
-            this.arrivalDateTimePicker.Location = new System.Drawing.Point(139, 95);
+            this.arrivalDateTimePicker.Location = new System.Drawing.Point(172, 93);
             this.arrivalDateTimePicker.Name = "arrivalDateTimePicker";
-            this.arrivalDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.arrivalDateTimePicker.Size = new System.Drawing.Size(247, 20);
             this.arrivalDateTimePicker.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(205, 27);
+            this.label3.Location = new System.Drawing.Point(273, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 7;
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(214, 79);
+            this.label4.Location = new System.Drawing.Point(282, 77);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 8;
@@ -111,14 +111,14 @@
             // 
             // departureTextBox
             // 
-            this.departureTextBox.Location = new System.Drawing.Point(363, 43);
+            this.departureTextBox.Location = new System.Drawing.Point(463, 41);
             this.departureTextBox.Name = "departureTextBox";
             this.departureTextBox.Size = new System.Drawing.Size(100, 20);
             this.departureTextBox.TabIndex = 9;
             // 
             // destinationTextBox
             // 
-            this.destinationTextBox.Location = new System.Drawing.Point(363, 95);
+            this.destinationTextBox.Location = new System.Drawing.Point(463, 93);
             this.destinationTextBox.Name = "destinationTextBox";
             this.destinationTextBox.Size = new System.Drawing.Size(100, 20);
             this.destinationTextBox.TabIndex = 10;
@@ -126,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(381, 27);
+            this.label5.Location = new System.Drawing.Point(487, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 11;
@@ -135,7 +135,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(381, 79);
+            this.label6.Location = new System.Drawing.Point(487, 77);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 12;
@@ -143,7 +143,7 @@
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(139, 158);
+            this.createButton.Location = new System.Drawing.Point(197, 156);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(83, 23);
             this.createButton.TabIndex = 13;
@@ -154,7 +154,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(255, 158);
+            this.cancelButton.Location = new System.Drawing.Point(313, 156);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(83, 23);
             this.cancelButton.TabIndex = 14;
@@ -167,7 +167,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(475, 202);
+            this.ClientSize = new System.Drawing.Size(601, 202);
             this.ControlBox = false;
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.createButton);
@@ -188,6 +188,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create Flight";
+            this.Load += new System.EventHandler(this.CreateFlightForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sizeNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

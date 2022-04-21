@@ -5,6 +5,7 @@ namespace PlaneManager.Forms
 {
     public partial class CreateFlightForm : Form
     {
+        private static string CustomDateTimePickerFormat { get; } = "   yyyy,MMMM,dd,dddd hh:mm:ss";
         public CreateFlightForm()
         {
             InitializeComponent();
@@ -23,6 +24,14 @@ namespace PlaneManager.Forms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void CreateFlightForm_Load(object sender, EventArgs e)
+        {
+            departureDateTimePicker.Format = DateTimePickerFormat.Custom;
+            departureDateTimePicker.CustomFormat = CustomDateTimePickerFormat;
+            arrivalDateTimePicker.Format = DateTimePickerFormat.Custom;
+            arrivalDateTimePicker.CustomFormat = CustomDateTimePickerFormat;
         }
     }
 }
