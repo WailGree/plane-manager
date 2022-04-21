@@ -25,7 +25,7 @@ namespace PlaneManager.Models
                 {
                     Seats = new Seat[Size];
                     int seatIndex = 0;
-                    for (int x = 4; x <= (1 + Size * 3); x += 3)
+                    for (int x = 3; x <= (1 + Size * 3); x += 3)
                     {
                         Seats[seatIndex] = new Seat(new string[] { data[x], data[x + 1], data[x + 2] });
                         seatIndex++;
