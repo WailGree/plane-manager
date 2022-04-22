@@ -13,8 +13,9 @@ namespace PlaneManager
         private enum DataType
         {
             Flight,
-            Ticket,
-            Passenger
+            Passenger,
+            Order,
+            Ticket
         }
 
         // Save Data globally
@@ -22,10 +23,12 @@ namespace PlaneManager
         public static BindingList<Passenger> Passengers { get; set; } = new BindingList<Passenger>();
         public static BindingList<Flight> Flights { get; set; } = new BindingList<Flight>();
         public static BindingList<Ticket> Tickets { get; set; } = new BindingList<Ticket>();
+        public static BindingList<Order> Orders { get; set; } = new BindingList<Order>();
 
         public static readonly string _passengersFile = "passengers.csv";
         public static readonly string _flightsFile = "flights.csv";
         public static readonly string _ticketsFile = "tickets.csv";
+        public static readonly string _ordersFile = "orders.csv";
 
         /// <summary>
         /// The main entry point for the application.
@@ -35,12 +38,14 @@ namespace PlaneManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainForm());
+            Application.Run(new MainForm());
         }
         public static void LoadData()
         {
+            LoadDataType(_passengersFile, DataType.Passenger);
             LoadDataType(_flightsFile, DataType.Flight);
             LoadDataType(_ticketsFile, DataType.Ticket);
+            LoadDataType(_ordersFile, DataType.Order);
         }
 
         private static void LoadDataType(string fileName, DataType dataType)
@@ -55,6 +60,10 @@ namespace PlaneManager
                 else if (dataType == DataType.Flight)
                 {
                     Flights.Add(new Flight(data));
+                }
+                else if(dataType == DataType.Order)
+                {
+                    Orders.Add(new Order(data));
                 }
                 else if (dataType == DataType.Ticket)
                 {
@@ -135,7 +144,19 @@ namespace PlaneManager
             }
         }
         #endregion
-
+        #region Orders related functions
+        public static void SaveOrders()
+        {
+            if (File.Exists(_ordersFile)) File.Delete(_ordersFile);
+            using (var sw = new StreamWriter(_ordersFile))
+            {
+                foreach (var order in Orders)
+                {
+                    sw.WriteLine($"{order.Id};{order.Flight};{order.Passenger};{order.Seat};{order.Ticket}");
+                }
+            }
+        }
+        #endregion
         #region Tickets related functions
         public static void SaveTickets()
         {
@@ -144,8 +165,17 @@ namespace PlaneManager
             {
                 foreach (var ticket in Tickets)
                 {
-                    sw.WriteLine($"{ticket.Id};{ticket.IsPurchased};");
+                    sw.WriteLine($"{ticket.Id};{ticket.OrderId};{ticket.SeatNumber}");
                 }
+            }
+        }
+
+        public static void LoadTickets()
+        {
+            if (File.Exists(_ticketsFile))
+            {
+                Tickets.Clear();
+                LoadDataType(_ticketsFile, DataType.Ticket);
             }
         }
         #endregion

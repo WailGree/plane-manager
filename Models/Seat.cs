@@ -6,7 +6,7 @@ namespace PlaneManager.Models
     {
         public int SeatNumber { get; set; }
         public bool IsBooked { get; set; } = false;
-
+        public Passenger Passenger { get; set; }
 
         public Seat(int seatNumber)
         {

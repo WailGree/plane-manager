@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace PlaneManager.Forms
 {
-    public partial class mainForm : Form
+    public partial class MainForm : Form
     {
-        public mainForm()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -95,6 +95,46 @@ namespace PlaneManager.Forms
         private void FilterFlightsTextBox_TextChanged(object sender, EventArgs e)
         {
             detailsDataGridView.DataSource = Program.Flights.Where(flight => flight.Name.Contains(filterFlightsTextBox.Text)).ToList();
+        }
+        #endregion
+
+        #region Orders related methods/events
+        private void NewOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var cOF = new CreateOrderForm())
+            {
+                if (cOF.ShowDialog() == DialogResult.OK)
+                {
+                }
+            }
+        }
+
+        private void ShowOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            detailsDataGridView.DataSource = Program.Orders;
+            filterFlightsTextBox.Hide();
+        }
+
+        private void SaveOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.SaveOrders();
+        }
+
+        private void LoadOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        #region Tickets related methods/events
+        private void SaveTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShowTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            detailsDataGridView.DataSource = Program.Tickets;
+            filterFlightsTextBox.Hide();
         }
         #endregion
     }

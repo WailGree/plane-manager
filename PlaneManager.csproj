@@ -52,8 +52,15 @@
     <Compile Include="Forms\CreateFlightForm.Designer.cs">
       <DependentUpon>CreateFlightForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreateOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateOrderForm.Designer.cs">
+      <DependentUpon>CreateOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Forms\CreatePassengerForm.cs">
       <SubType>Form</SubType>
@@ -73,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\CreateFlightForm.resx">
       <DependentUpon>CreateFlightForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateOrderForm.resx">
+      <DependentUpon>CreateOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreatePassengerForm.resx">
       <DependentUpon>CreatePassengerForm.cs</DependentUpon>
