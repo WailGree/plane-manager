@@ -1,15 +1,16 @@
-﻿using PlaneManager.Models;
+﻿using PlaneManager.Modellek;
 using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PlaneManager.Forms
+namespace PlaneManager.Oldalak
 {
     public partial class CreateOrderForm : Form
     {
         public Guid SelectedFlightGuid { get; private set; }
         public Guid SelectedPassengerGuid { get; private set; }
+
         public CreateOrderForm()
         {
             InitializeComponent();
@@ -18,48 +19,47 @@ namespace PlaneManager.Forms
         private void CreateOrderForm_Load(object sender, EventArgs e)
         {
             createPassengerButton.Hide();
-            selectPassengerComboBox.DataSource = Program.Passengers;
+            selectPassengerComboBox.DataSource = Program.Utasok;
             selectPassengerComboBox.FormattingEnabled = true;
-            selectPassengerComboBox.DisplayMember = "Name | PhoneNumber";
-            // Only show flights that are still reachable.
-            var flights = Program.Flights.Where(flight => flight.DepartureDate > DateTime.Now).ToList();
+            selectPassengerComboBox.DisplayMember = "Nev | Telefonszam";
+
+            var flights = Program.Jaratok.Where(j => j.IndulasIdeje > DateTime.Now).ToList();
             flightsComboBox.DataSource = flights;
             flightsComboBox.ValueMember = "Id";
-            flightsComboBox.DisplayMember = "Name";
+            flightsComboBox.DisplayMember = "Nev";
 
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            var flight = Program.Flights.Where(f => f.Id == SelectedFlightGuid).First();
-            var hasFreeSeats = flight.Seats.Any(se => se.IsBooked == false);
-            var isChosenSeatBooked = flight.Seats.Where(se => se.SeatNumber == Convert.ToInt32(chosenSeatComboBox.Text)).First().IsBooked;
+            var flight = Program.Jaratok.Where(j => j.Id == SelectedFlightGuid).First();
+            var hasFreeSeats = flight.Ulesek.Any(u => u.Lefoglalt == false);
+            var isChosenSeatBooked = flight.Ulesek.Where(u => u.SzekSzama == Convert.ToInt32(chosenSeatComboBox.Text)).First().Lefoglalt;
             if (hasFreeSeats)
             {
                 if (!isChosenSeatBooked)
                 {
-                    // Assign passenger to seat
-                    var chosenSeatGuid = (Guid)chosenSeatComboBox.SelectedValue;
-                    var seat = flight.Seats.Where(s => s.Id == chosenSeatGuid).First();
-                    var passenger = Program.Passengers.Where(p => p.Id == ((Passenger)selectPassengerComboBox.SelectedValue).Id).First();
-                    seat.Passenger = passenger;
-                    seat.IsBooked = true;
 
-                    // Create order
-                    var order = new Order(flight, passenger, seat);
-                    order.CreateTicket();
-                    Program.Orders.Add(order);
+                    var ulesId = (Guid)chosenSeatComboBox.SelectedValue;
+                    var ules = flight.Ulesek.Where(u => u.Id == ulesId).First();
+                    var utas = Program.Utasok.Where(u => u.Id == ((Utas)selectPassengerComboBox.SelectedValue).Id).First();
+                    ules.Utas = utas;
+                    ules.Lefoglalt = true;
+
+                    var rendeles = new Rendeles(flight, utas, ules);
+                    rendeles.JegyLetrehozasa();
+                    Program.Rendelesek.Add(rendeles);
                 }
                 else
                 {
-                    MessageBox.Show("Seat already taken!", "Seat taken",
+                    MessageBox.Show("Az ülés foglalt!", "Ülés foglalt",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("There are no free seats left for this flight!", "Flight is full",
+                MessageBox.Show("Nincsenek szabad ülések a vonaton!", "A jarat megtelt",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
@@ -67,16 +67,16 @@ namespace PlaneManager.Forms
 
         private void FlightsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedFlight = (Flight)flightsComboBox.SelectedItem;
+            var selectedFlight = (Jarat)flightsComboBox.SelectedItem;
             SelectedFlightGuid = Guid.Parse(selectedFlight.Id.ToString());
             if (SelectedFlightGuid != null && selectedFlight != null)
             {
-                var result = Program.Flights.Where(f => f.Id == SelectedFlightGuid).First().Seats.Where(s => s.IsBooked == false).ToList();
+                var result = Program.Jaratok.Where(j => j.Id == SelectedFlightGuid).First().Ulesek.Where(u => u.Lefoglalt == false).ToList();
                 if (result != null)
                 {
                     chosenSeatComboBox.DataSource = result;
                     chosenSeatComboBox.ValueMember = "Id";
-                    chosenSeatComboBox.DisplayMember = "SeatNumber";
+                    chosenSeatComboBox.DisplayMember = "UlesSzama";
                 }
             }
         }
@@ -96,16 +96,16 @@ namespace PlaneManager.Forms
 
         private void SelectPassengerComboBox_Format(object sender, ListControlConvertEventArgs e)
         {
-            string name = ((Passenger)e.ListItem).Name;
-            string email = ((Passenger)e.ListItem).Email;
-            string phoneNumber = ((Passenger)e.ListItem).PhoneNumber;
-            e.Value = $"{name} | {email} | {phoneNumber}";
+            string nev = ((Utas)e.ListItem).Nev;
+            string email = ((Utas)e.ListItem).Email;
+            string telefonszam = ((Utas)e.ListItem).Telefonszam;
+            e.Value = $"{nev} | {email} | {telefonszam}";
         }
 
         private void SearchPassengerNameTextBox_TextChanged(object sender, EventArgs e)
         {
             selectPassengerComboBox.DataSource = null;
-            selectPassengerComboBox.DataSource = Program.Passengers.Where(p => p.Name.Contains(searchPassengerNameTextBox.Text)).ToList();
+            selectPassengerComboBox.DataSource = Program.Utasok.Where(u => u.Nev.Contains(searchPassengerNameTextBox.Text)).ToList();
         }
 
         private void CreatePassengerButton_Click(object sender, EventArgs e)

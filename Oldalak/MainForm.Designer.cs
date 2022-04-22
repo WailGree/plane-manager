@@ -1,4 +1,4 @@
-﻿namespace PlaneManager.Forms
+﻿namespace PlaneManager.Oldalak
 {
     partial class MainForm
     {
@@ -76,28 +76,28 @@
             this.createFlightToolStripMenuItem,
             this.newOrderToolStripMenuItem});
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.createToolStripMenuItem.Text = "Create";
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.createToolStripMenuItem.Text = "Létrehoz";
             // 
             // createPassengerToolStripMenuItem
             // 
             this.createPassengerToolStripMenuItem.Name = "createPassengerToolStripMenuItem";
-            this.createPassengerToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.createPassengerToolStripMenuItem.Text = "New Passenger";
+            this.createPassengerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createPassengerToolStripMenuItem.Text = "Új utas";
             this.createPassengerToolStripMenuItem.Click += new System.EventHandler(this.CreatePassengerToolStripMenuItem_Click);
             // 
             // createFlightToolStripMenuItem
             // 
             this.createFlightToolStripMenuItem.Name = "createFlightToolStripMenuItem";
-            this.createFlightToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.createFlightToolStripMenuItem.Text = "New Flight";
+            this.createFlightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createFlightToolStripMenuItem.Text = "Új járat";
             this.createFlightToolStripMenuItem.Click += new System.EventHandler(this.CreateFlightToolStripMenuItem_Click);
             // 
             // newOrderToolStripMenuItem
             // 
             this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
-            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.newOrderToolStripMenuItem.Text = "New Order";
+            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newOrderToolStripMenuItem.Text = "Új rendelés";
             this.newOrderToolStripMenuItem.Click += new System.EventHandler(this.NewOrderToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
@@ -108,35 +108,35 @@
             this.showOrdersToolStripMenuItem,
             this.showTicketsToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.viewToolStripMenuItem.Text = "Megjelenítés";
             // 
             // showPassengersToolStripMenuItem
             // 
             this.showPassengersToolStripMenuItem.Name = "showPassengersToolStripMenuItem";
-            this.showPassengersToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.showPassengersToolStripMenuItem.Text = "Show Passengers";
+            this.showPassengersToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.showPassengersToolStripMenuItem.Text = "Utasok megjelenítése";
             this.showPassengersToolStripMenuItem.Click += new System.EventHandler(this.ShowPassengersToolStripMenuItem_Click);
             // 
             // showFlightsToolStripMenuItem
             // 
             this.showFlightsToolStripMenuItem.Name = "showFlightsToolStripMenuItem";
-            this.showFlightsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.showFlightsToolStripMenuItem.Text = "Show Flights";
+            this.showFlightsToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.showFlightsToolStripMenuItem.Text = "Járatok megjelenítése";
             this.showFlightsToolStripMenuItem.Click += new System.EventHandler(this.ShowFlightsToolStripMenuItem_Click);
             // 
             // showOrdersToolStripMenuItem
             // 
             this.showOrdersToolStripMenuItem.Name = "showOrdersToolStripMenuItem";
-            this.showOrdersToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.showOrdersToolStripMenuItem.Text = "Show Orders";
+            this.showOrdersToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.showOrdersToolStripMenuItem.Text = "Rendelések megjelenítése";
             this.showOrdersToolStripMenuItem.Click += new System.EventHandler(this.ShowOrdersToolStripMenuItem_Click);
             // 
             // showTicketsToolStripMenuItem
             // 
             this.showTicketsToolStripMenuItem.Name = "showTicketsToolStripMenuItem";
-            this.showTicketsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.showTicketsToolStripMenuItem.Text = "Show Tickets";
+            this.showTicketsToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.showTicketsToolStripMenuItem.Text = "Jegyek megjelenítése";
             this.showTicketsToolStripMenuItem.Click += new System.EventHandler(this.ShowTicketsToolStripMenuItem_Click);
             // 
             // dataToolStripMenuItem
@@ -147,8 +147,8 @@
             this.ordersToolStripMenuItem,
             this.ticketsToolStripMenuItem});
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
-            this.dataToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.dataToolStripMenuItem.Text = "Data";
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.dataToolStripMenuItem.Text = "Adat";
             // 
             // passangersToolStripMenuItem
             // 
@@ -157,20 +157,20 @@
             this.loadPassangersToolStripMenuItem});
             this.passangersToolStripMenuItem.Name = "passangersToolStripMenuItem";
             this.passangersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.passangersToolStripMenuItem.Text = "Passangers";
+            this.passangersToolStripMenuItem.Text = "Utasok";
             // 
             // savePassangersToolStripMenuItem
             // 
             this.savePassangersToolStripMenuItem.Name = "savePassangersToolStripMenuItem";
-            this.savePassangersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.savePassangersToolStripMenuItem.Text = "Save Passangers";
+            this.savePassangersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.savePassangersToolStripMenuItem.Text = "Utasok mentése";
             this.savePassangersToolStripMenuItem.Click += new System.EventHandler(this.SavePassangersToolStripMenuItem_Click);
             // 
             // loadPassangersToolStripMenuItem
             // 
             this.loadPassangersToolStripMenuItem.Name = "loadPassangersToolStripMenuItem";
-            this.loadPassangersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.loadPassangersToolStripMenuItem.Text = "Load Passangers";
+            this.loadPassangersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadPassangersToolStripMenuItem.Text = "Utasok betöltése";
             this.loadPassangersToolStripMenuItem.Click += new System.EventHandler(this.LoadPassangersToolStripMenuItem_Click);
             // 
             // flightsToolStripMenuItem
@@ -180,20 +180,20 @@
             this.loadFlightsToolStripMenuItem});
             this.flightsToolStripMenuItem.Name = "flightsToolStripMenuItem";
             this.flightsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.flightsToolStripMenuItem.Text = "Flights";
+            this.flightsToolStripMenuItem.Text = "Járatok";
             // 
             // saveFlightsToolStripMenuItem
             // 
             this.saveFlightsToolStripMenuItem.Name = "saveFlightsToolStripMenuItem";
-            this.saveFlightsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.saveFlightsToolStripMenuItem.Text = "Save Flights";
+            this.saveFlightsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveFlightsToolStripMenuItem.Text = "Járatok mentése";
             this.saveFlightsToolStripMenuItem.Click += new System.EventHandler(this.SaveFlightsToolStripMenuItem_Click);
             // 
             // loadFlightsToolStripMenuItem
             // 
             this.loadFlightsToolStripMenuItem.Name = "loadFlightsToolStripMenuItem";
-            this.loadFlightsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.loadFlightsToolStripMenuItem.Text = "Load Flights";
+            this.loadFlightsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadFlightsToolStripMenuItem.Text = "Járatok betöltése";
             this.loadFlightsToolStripMenuItem.Click += new System.EventHandler(this.LoadFlightsToolStripMenuItem_Click);
             // 
             // ordersToolStripMenuItem
@@ -203,20 +203,20 @@
             this.loadOrdersToolStripMenuItem});
             this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
             this.ordersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ordersToolStripMenuItem.Text = "Orders";
+            this.ordersToolStripMenuItem.Text = "Rendelések";
             // 
             // saveOrdersToolStripMenuItem
             // 
             this.saveOrdersToolStripMenuItem.Name = "saveOrdersToolStripMenuItem";
-            this.saveOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveOrdersToolStripMenuItem.Text = "Save Orders";
+            this.saveOrdersToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.saveOrdersToolStripMenuItem.Text = "Rendelések mentése";
             this.saveOrdersToolStripMenuItem.Click += new System.EventHandler(this.SaveOrdersToolStripMenuItem_Click);
             // 
             // loadOrdersToolStripMenuItem
             // 
             this.loadOrdersToolStripMenuItem.Name = "loadOrdersToolStripMenuItem";
-            this.loadOrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadOrdersToolStripMenuItem.Text = "Load Orders";
+            this.loadOrdersToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.loadOrdersToolStripMenuItem.Text = "Rendelések betöltése";
             this.loadOrdersToolStripMenuItem.Click += new System.EventHandler(this.LoadOrdersToolStripMenuItem_Click);
             // 
             // ticketsToolStripMenuItem
@@ -226,20 +226,20 @@
             this.loadTicketsToolStripMenuItem});
             this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
             this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ticketsToolStripMenuItem.Text = "Tickets";
+            this.ticketsToolStripMenuItem.Text = "Jegyek";
             // 
             // saveTicketsToolStripMenuItem
             // 
             this.saveTicketsToolStripMenuItem.Name = "saveTicketsToolStripMenuItem";
-            this.saveTicketsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.saveTicketsToolStripMenuItem.Text = "Save Tickets";
+            this.saveTicketsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveTicketsToolStripMenuItem.Text = "Jegyek mentése";
             this.saveTicketsToolStripMenuItem.Click += new System.EventHandler(this.SaveTicketsToolStripMenuItem_Click);
             // 
             // loadTicketsToolStripMenuItem
             // 
             this.loadTicketsToolStripMenuItem.Name = "loadTicketsToolStripMenuItem";
-            this.loadTicketsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.loadTicketsToolStripMenuItem.Text = "Load Tickets";
+            this.loadTicketsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadTicketsToolStripMenuItem.Text = "Jegyek betöltése";
             // 
             // detailsDataGridView
             // 
@@ -269,7 +269,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Flight Manager";
+            this.Text = "Jaratkezelo";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

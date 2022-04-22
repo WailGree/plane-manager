@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PlaneManager.Forms
+namespace PlaneManager.Oldalak
 {
     public partial class MainForm : Form
     {
@@ -17,21 +17,20 @@ namespace PlaneManager.Forms
             filterFlightsTextBox.Hide();
         }
 
-        #region Passengers related methods/events
         private void SavePassangersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.SavePassengers();
+            Program.UtasokMentese();
         }
 
         private void LoadPassangersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Program._passengersFile))
+            if (File.Exists(Program._utasokFajl))
             {
-                Program.LoadPassangers();
+                Program.UtasokBetoltese();
             }
             else
             {
-                MessageBox.Show($"Save file \"{Program._passengersFile}\" not found.", "File not found",
+                MessageBox.Show($"Save file \"{Program._utasokFajl}\" not found.", "File not found",
                                  MessageBoxButtons.OK,
                                  MessageBoxIcon.Warning);
             }
@@ -50,15 +49,13 @@ namespace PlaneManager.Forms
 
         private void ShowPassengersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            detailsDataGridView.DataSource = Program.Passengers;
+            detailsDataGridView.DataSource = Program.Utasok;
             filterFlightsTextBox.Hide();
         }
-        #endregion
 
-        #region Flights related methods/events
         private void ShowFlightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            detailsDataGridView.DataSource = Program.Flights;
+            detailsDataGridView.DataSource = Program.Jaratok;
             filterFlightsTextBox.Show();
         }
 
@@ -75,18 +72,18 @@ namespace PlaneManager.Forms
 
         private void SaveFlightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.SaveFlights();
+            Program.JaratokMentese();
         }
 
         private void LoadFlightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Program._flightsFile))
+            if (File.Exists(Program._jaratokFajl))
             {
-                Program.LoadFlights();
+                Program.JaratokBetoltese();
             }
             else
             {
-                MessageBox.Show($"Save file \"{Program._flightsFile}\" not found.", "File not found",
+                MessageBox.Show($"Save file \"{Program._jaratokFajl}\" not found.", "File not found",
                                  MessageBoxButtons.OK,
                                  MessageBoxIcon.Warning);
             }
@@ -94,11 +91,9 @@ namespace PlaneManager.Forms
 
         private void FilterFlightsTextBox_TextChanged(object sender, EventArgs e)
         {
-            detailsDataGridView.DataSource = Program.Flights.Where(flight => flight.Name.Contains(filterFlightsTextBox.Text)).ToList();
+            detailsDataGridView.DataSource = Program.Jaratok.Where(f => f.Nev.Contains(filterFlightsTextBox.Text)).ToList();
         }
-        #endregion
 
-        #region Orders related methods/events
         private void NewOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var cOF = new CreateOrderForm())
@@ -111,21 +106,20 @@ namespace PlaneManager.Forms
 
         private void ShowOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            detailsDataGridView.DataSource = Program.Orders;
+            detailsDataGridView.DataSource = Program.Rendelesek;
             filterFlightsTextBox.Hide();
         }
 
         private void SaveOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.SaveOrders();
+            Program.RendelesekMentese();
         }
 
         private void LoadOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-        #endregion
-        #region Tickets related methods/events
+
         private void SaveTicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -133,9 +127,8 @@ namespace PlaneManager.Forms
 
         private void ShowTicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            detailsDataGridView.DataSource = Program.Tickets;
+            detailsDataGridView.DataSource = Program.Jegyek;
             filterFlightsTextBox.Hide();
         }
-        #endregion
     }
 }

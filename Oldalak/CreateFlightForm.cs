@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PlaneManager.Forms
+namespace PlaneManager.Oldalak
 {
     public partial class CreateFlightForm : Form
     {
-        private static string CustomDateTimePickerFormat { get; } = "   yyyy,MMMM,dd,dddd hh:mm:ss";
+        private static string EgyediAdatFormatum { get; } = "   yyyy,MMMM,dd,dddd hh:mm:ss";
         public CreateFlightForm()
         {
             InitializeComponent();
@@ -15,12 +15,12 @@ namespace PlaneManager.Forms
         {
             if (!string.IsNullOrEmpty(nameTextBox.Text) && !string.IsNullOrEmpty(departureTextBox.Text) && !string.IsNullOrEmpty(destinationTextBox.Text))
             {
-                Program.CreateFlight(nameTextBox.Text, Decimal.ToInt32(sizeNumericUpDown.Value), departureDateTimePicker.Value, arrivalDateTimePicker.Value, departureTextBox.Text, destinationTextBox.Text);
+                Program.JaratLetrehozasa(nameTextBox.Text, Decimal.ToInt32(sizeNumericUpDown.Value), departureDateTimePicker.Value, arrivalDateTimePicker.Value, departureTextBox.Text, destinationTextBox.Text);
                 Close();
             }
             else
             {
-                MessageBox.Show("Please fill out the missing fields!", "Required fields empty",
+                MessageBox.Show("Kérem töltse ki az oldalt!", "Üres mező",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
@@ -29,9 +29,9 @@ namespace PlaneManager.Forms
         private void CreateFlightForm_Load(object sender, EventArgs e)
         {
             departureDateTimePicker.Format = DateTimePickerFormat.Custom;
-            departureDateTimePicker.CustomFormat = CustomDateTimePickerFormat;
+            departureDateTimePicker.CustomFormat = EgyediAdatFormatum;
             arrivalDateTimePicker.Format = DateTimePickerFormat.Custom;
-            arrivalDateTimePicker.CustomFormat = CustomDateTimePickerFormat;
+            arrivalDateTimePicker.CustomFormat = EgyediAdatFormatum;
         }
     }
 }

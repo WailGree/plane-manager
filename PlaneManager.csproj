@@ -46,48 +46,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\CreateFlightForm.cs">
+    <Compile Include="Oldalak\CreateFlightForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateFlightForm.Designer.cs">
+    <Compile Include="Oldalak\CreateFlightForm.Designer.cs">
       <DependentUpon>CreateFlightForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateOrderForm.cs">
+    <Compile Include="Oldalak\CreateOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateOrderForm.Designer.cs">
+    <Compile Include="Oldalak\CreateOrderForm.Designer.cs">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModel.cs" />
-    <Compile Include="Models\Flight.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Passenger.cs" />
-    <Compile Include="Forms\CreatePassengerForm.cs">
+    <Compile Include="Modellek\AdatModel.cs" />
+    <Compile Include="Modellek\Jarat.cs" />
+    <Compile Include="Modellek\Rendeles.cs" />
+    <Compile Include="Modellek\Utas.cs" />
+    <Compile Include="Oldalak\CreatePassengerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreatePassengerForm.Designer.cs">
+    <Compile Include="Oldalak\CreatePassengerForm.Designer.cs">
       <DependentUpon>CreatePassengerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="Oldalak\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
+    <Compile Include="Oldalak\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Seat.cs" />
-    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Modellek\Ules.cs" />
+    <Compile Include="Modellek\Jegy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\CreateFlightForm.resx">
+    <EmbeddedResource Include="Oldalak\CreateFlightForm.resx">
       <DependentUpon>CreateFlightForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateOrderForm.resx">
+    <EmbeddedResource Include="Oldalak\CreateOrderForm.resx">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreatePassengerForm.resx">
+    <EmbeddedResource Include="Oldalak\CreatePassengerForm.resx">
       <DependentUpon>CreatePassengerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="Oldalak\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

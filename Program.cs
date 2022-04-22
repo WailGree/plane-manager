@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using PlaneManager.Models;
-using PlaneManager.Forms;
+using PlaneManager.Modellek;
+using PlaneManager.Oldalak;
 using System.ComponentModel;
 using System.Text;
 
@@ -10,25 +10,25 @@ namespace PlaneManager
 {
     internal static class Program
     {
-        private enum DataType
+        private enum Adattipus
         {
-            Flight,
-            Passenger,
-            Order,
-            Ticket
+            Jarat,
+            Utas,
+            Rendeles,
+            Jegy
         }
 
         // Save Data globally
         // Using BindingList instead of List will make it possible, to update DataGridView on change of data. With simple List it will NOT fire event/update view.
-        public static BindingList<Passenger> Passengers { get; set; } = new BindingList<Passenger>();
-        public static BindingList<Flight> Flights { get; set; } = new BindingList<Flight>();
-        public static BindingList<Ticket> Tickets { get; set; } = new BindingList<Ticket>();
-        public static BindingList<Order> Orders { get; set; } = new BindingList<Order>();
+        public static BindingList<Utas> Utasok { get; set; } = new BindingList<Utas>();
+        public static BindingList<Jarat> Jaratok { get; set; } = new BindingList<Jarat>();
+        public static BindingList<Jegy> Jegyek { get; set; } = new BindingList<Jegy>();
+        public static BindingList<Rendeles> Rendelesek { get; set; } = new BindingList<Rendeles>();
 
-        public static readonly string _passengersFile = "passengers.csv";
-        public static readonly string _flightsFile = "flights.csv";
-        public static readonly string _ticketsFile = "tickets.csv";
-        public static readonly string _ordersFile = "orders.csv";
+        public static readonly string _utasokFajl = "utasok.csv";
+        public static readonly string _jaratokFajl = "jaratok.csv";
+        public static readonly string _jegyekFajl = "jegyek.csv";
+        public static readonly string _rendelesekFajl = "rendelesek.csv";
 
         /// <summary>
         /// The main entry point for the application.
@@ -40,144 +40,137 @@ namespace PlaneManager
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
-        public static void LoadData()
+        public static void AdatokBetoltese()
         {
-            LoadDataType(_passengersFile, DataType.Passenger);
-            LoadDataType(_flightsFile, DataType.Flight);
-            LoadDataType(_ticketsFile, DataType.Ticket);
-            LoadDataType(_ordersFile, DataType.Order);
+            AdatTipusBetoltese(_utasokFajl, Adattipus.Utas);
+            AdatTipusBetoltese(_jaratokFajl, Adattipus.Jarat);
+            AdatTipusBetoltese(_jegyekFajl, Adattipus.Jegy);
+            AdatTipusBetoltese(_rendelesekFajl, Adattipus.Rendeles);
         }
 
-        private static void LoadDataType(string fileName, DataType dataType)
+        private static void AdatTipusBetoltese(string filenev, Adattipus adattipus)
         {
-            foreach (var line in File.ReadAllLines(fileName))
+            foreach (var line in File.ReadAllLines(filenev))
             {
                 var data = line.Split(';');
-                if (dataType == DataType.Passenger)
+                if (adattipus == Adattipus.Utas)
                 {
-                    Passengers.Add(new Passenger(data));
+                    Utasok.Add(new Utas(data));
                 }
-                else if (dataType == DataType.Flight)
+                else if (adattipus == Adattipus.Jarat)
                 {
-                    Flights.Add(new Flight(data));
+                    Jaratok.Add(new Jarat(data));
                 }
-                else if(dataType == DataType.Order)
+                else if (adattipus == Adattipus.Rendeles)
                 {
-                    Orders.Add(new Order(data));
+                    Rendelesek.Add(new Rendeles(data));
                 }
-                else if (dataType == DataType.Ticket)
+                else if (adattipus == Adattipus.Jegy)
                 {
-                    Tickets.Add(new Ticket(data));
-                }
-            }
-        }
-
-        public static void SaveAllData()
-        {
-            SavePassengers();
-            SaveFlights();
-            SaveTickets();
-        }
-
-        #region Passangers related functions
-        public static void CreatePassenger(string name, string birthdate, string phonenumber, string email)
-        {
-            Passengers.Add(new Passenger(name, birthdate, phonenumber, email));
-        }
-
-        public static void SavePassengers()
-        {
-
-            if (File.Exists(_passengersFile)) File.Delete(_passengersFile);
-            using (var sw = new StreamWriter(_passengersFile))
-            {
-                foreach (var passenger in Passengers)
-                {
-                    sw.WriteLine($"{passenger.Id};{passenger.Name};{passenger.BirthDate};{passenger.PhoneNumber};{passenger.Email}");
+                    Jegyek.Add(new Jegy(data));
                 }
             }
         }
 
-        public static void LoadPassangers()
+        public static void OsszesAdatMentése()
         {
-            if (File.Exists(_passengersFile))
+            UtasokMentese();
+            JaratokMentese();
+            JegyekMentese();
+        }
+
+        public static void UtasLetrehozasa(string name, string birthdate, string phonenumber, string email)
+        {
+            Utasok.Add(new Utas(name, birthdate, phonenumber, email));
+        }
+
+        public static void UtasokMentese()
+        {
+
+            if (File.Exists(_utasokFajl)) File.Delete(_utasokFajl);
+            using (var sw = new StreamWriter(_utasokFajl))
             {
-                Passengers.Clear();
-                LoadDataType(_passengersFile, DataType.Passenger);
+                foreach (var utas in Utasok)
+                {
+                    sw.WriteLine($"{utas.Id};{utas.Nev};{utas.SzuletesiDatum};{utas.Telefonszam};{utas.Email}");
+                }
             }
         }
-        #endregion
 
-        #region Flights related functions
-        public static void CreateFlight(string name, int size, DateTime departureDate, DateTime arrivalDate, string departure, string destination)
+        public static void UtasokBetoltese()
         {
-            Flights.Add(new Flight(name, size, departureDate, arrivalDate, departure, destination));
-        }
-        public static void SaveFlights()
-        {
-            if (File.Exists(_flightsFile)) File.Delete(_flightsFile);
-            using (var sw = new StreamWriter(_flightsFile))
+            if (File.Exists(_utasokFajl))
             {
-                foreach (var flight in Flights)
+                Utasok.Clear();
+                AdatTipusBetoltese(_utasokFajl, Adattipus.Utas);
+            }
+        }
+
+        public static void JaratLetrehozasa(string nev, int meret, DateTime indulasIdeje, DateTime erkezesIdeje, string indulohely, string cel)
+        {
+            Jaratok.Add(new Jarat(nev, meret, indulasIdeje, erkezesIdeje, indulohely, cel));
+        }
+        public static void JaratokMentese()
+        {
+            if (File.Exists(_jaratokFajl)) File.Delete(_jaratokFajl);
+            using (var sw = new StreamWriter(_jaratokFajl))
+            {
+                foreach (var jarat in Jaratok)
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append($"{flight.Id};{flight.Name};{flight.Size};");
-                    if (flight.Size > 0)
+                    sb.Append($"{jarat.Id};{jarat.Nev};{jarat.Meret};");
+                    if (jarat.Meret > 0)
                     {
-                        foreach (var seat in flight.Seats)
+                        foreach (var seat in jarat.Ulesek)
                         {
-                            sb.Append($"{seat.Id};{seat.SeatNumber};{seat.IsBooked};");
+                            sb.Append($"{seat.Id};{seat.SzekSzama};{seat.Lefoglalt};");
                         }
                     }
-                    sb.Append($"{flight.DepartureDate};{flight.ArrivalDate};{flight.Departure};{flight.Destination}");
+                    sb.Append($"{jarat.IndulasIdeje};{jarat.ErkezesIdeje};{jarat.Indulohely};{jarat.Cel}");
                     sw.WriteLine(sb);
                 }
             }
         }
 
-        public static void LoadFlights()
+        public static void JaratokBetoltese()
         {
-            if (File.Exists(_flightsFile))
+            if (File.Exists(_jaratokFajl))
             {
-                Flights.Clear();
-                LoadDataType(_flightsFile, DataType.Flight);
+                Jaratok.Clear();
+                AdatTipusBetoltese(_jaratokFajl, Adattipus.Jarat);
             }
         }
-        #endregion
-        #region Orders related functions
-        public static void SaveOrders()
+        public static void RendelesekMentese()
         {
-            if (File.Exists(_ordersFile)) File.Delete(_ordersFile);
-            using (var sw = new StreamWriter(_ordersFile))
+            if (File.Exists(_rendelesekFajl)) File.Delete(_rendelesekFajl);
+            using (var sw = new StreamWriter(_rendelesekFajl))
             {
-                foreach (var order in Orders)
+                foreach (var rendeles in Rendelesek)
                 {
-                    sw.WriteLine($"{order.Id};{order.Flight};{order.Passenger};{order.Seat};{order.Ticket}");
-                }
-            }
-        }
-        #endregion
-        #region Tickets related functions
-        public static void SaveTickets()
-        {
-            if (File.Exists(_ticketsFile)) File.Delete(_ticketsFile);
-            using (var sw = new StreamWriter(_ticketsFile))
-            {
-                foreach (var ticket in Tickets)
-                {
-                    sw.WriteLine($"{ticket.Id};{ticket.OrderId};{ticket.SeatNumber}");
+                    sw.WriteLine($"{rendeles.Id};{rendeles.Jarat};{rendeles.Utas};{rendeles.ules};{rendeles.Jegy}");
                 }
             }
         }
 
-        public static void LoadTickets()
+        public static void JegyekMentese()
         {
-            if (File.Exists(_ticketsFile))
+            if (File.Exists(_jegyekFajl)) File.Delete(_jegyekFajl);
+            using (var sw = new StreamWriter(_jegyekFajl))
             {
-                Tickets.Clear();
-                LoadDataType(_ticketsFile, DataType.Ticket);
+                foreach (var ticket in Jegyek)
+                {
+                    sw.WriteLine($"{ticket.Id};{ticket.RendelesID};{ticket.SzekSzama}");
+                }
             }
         }
-        #endregion
+
+        public static void JegyekBetoltese()
+        {
+            if (File.Exists(_jegyekFajl))
+            {
+                Jegyek.Clear();
+                AdatTipusBetoltese(_jegyekFajl, Adattipus.Jegy);
+            }
+        }
     }
 }

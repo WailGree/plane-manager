@@ -1,4 +1,4 @@
-﻿namespace PlaneManager.Forms
+﻿namespace PlaneManager.Oldalak
 {
     partial class CreateOrderForm
     {
@@ -46,8 +46,8 @@
             // 
             // flightsComboBox
             // 
-            resources.ApplyResources(this.flightsComboBox, "flightsComboBox");
             this.flightsComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.flightsComboBox, "flightsComboBox");
             this.flightsComboBox.Name = "flightsComboBox";
             this.flightsComboBox.SelectedIndexChanged += new System.EventHandler(this.FlightsComboBox_SelectedIndexChanged);
             // 
@@ -76,8 +76,8 @@
             // 
             // cancelButton
             // 
-            resources.ApplyResources(this.cancelButton, "cancelButton");
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.cancelButton, "cancelButton");
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -88,14 +88,14 @@
             // 
             // chosenSeatComboBox
             // 
-            resources.ApplyResources(this.chosenSeatComboBox, "chosenSeatComboBox");
             this.chosenSeatComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.chosenSeatComboBox, "chosenSeatComboBox");
             this.chosenSeatComboBox.Name = "chosenSeatComboBox";
             // 
             // selectPassengerComboBox
             // 
-            resources.ApplyResources(this.selectPassengerComboBox, "selectPassengerComboBox");
             this.selectPassengerComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.selectPassengerComboBox, "selectPassengerComboBox");
             this.selectPassengerComboBox.Name = "selectPassengerComboBox";
             this.selectPassengerComboBox.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.SelectPassengerComboBox_Format);
             // 

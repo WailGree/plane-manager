@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PlaneManager.Forms
+namespace PlaneManager.Oldalak
 {
     public partial class CreatePassengerForm : Form
     {
@@ -12,15 +12,15 @@ namespace PlaneManager.Forms
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(nameTextBox.Text) && string.IsNullOrEmpty(birthDateTextBox.Text) && string.IsNullOrEmpty(PhoneNumberTextBox.Text) && string.IsNullOrEmpty(EmailTextBox.Text))
+            if (string.IsNullOrEmpty(nameTextBox.Text) && string.IsNullOrEmpty(birthDateTextBox.Text) && string.IsNullOrEmpty(PhoneNumberTextBox.Text) && string.IsNullOrEmpty(EmailTextBox.Text))
             {
-                MessageBox.Show("Please fill out the missing fields!", "Required fields empty",
+                MessageBox.Show("Kérem töltse ki az oldalt!", "Üres mező",
                  MessageBoxButtons.OK,
                  MessageBoxIcon.Error);
             }
             else
             {
-                Program.CreatePassenger(nameTextBox.Text, birthDateTextBox.Text, PhoneNumberTextBox.Text, EmailTextBox.Text);
+                Program.UtasLetrehozasa(nameTextBox.Text, birthDateTextBox.Text, PhoneNumberTextBox.Text, EmailTextBox.Text);
                 Close();
             }
         }

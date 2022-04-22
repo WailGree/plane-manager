@@ -1,4 +1,4 @@
-﻿namespace PlaneManager.Forms
+﻿namespace PlaneManager.Oldalak
 {
     partial class CreateFlightForm
     {
@@ -64,18 +64,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(66, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Name";
+            this.label1.Text = "Név";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(66, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Size";
+            this.label2.Text = "Méret";
             // 
             // departureDateTimePicker
             // 
@@ -96,18 +96,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(273, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Departure";
+            this.label3.Text = "Indulás";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(282, 77);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Arrival";
+            this.label4.Text = "Érkezés";
             // 
             // departureTextBox
             // 
@@ -128,18 +128,18 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(487, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Departure";
+            this.label5.Text = "Indulóhely";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(487, 77);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.Size = new System.Drawing.Size(22, 13);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Destination";
+            this.label6.Text = "Cél";
             // 
             // createButton
             // 
@@ -147,7 +147,7 @@
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(83, 23);
             this.createButton.TabIndex = 13;
-            this.createButton.Text = "Create";
+            this.createButton.Text = "Létrehoz";
             this.createButton.UseVisualStyleBackColor = true;
             this.createButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
@@ -158,7 +158,7 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(83, 23);
             this.cancelButton.TabIndex = 14;
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = "Mégse";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // CreateFlightForm
@@ -187,7 +187,7 @@
             this.Name = "CreateFlightForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Create Flight";
+            this.Text = "Új járat";
             this.Load += new System.EventHandler(this.CreateFlightForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sizeNumericUpDown)).EndInit();
             this.ResumeLayout(false);
